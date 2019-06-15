@@ -1,14 +1,14 @@
-package pojo;
+package club.xuanshangling.pojo;
 
 import java.util.Date;
 import javax.persistence.*;
 
-public class Users {
+public class User {
     /**
      * 主键
      */
     @Id
-    private Integer id;
+    private String id;
 
     /**
      * 用户名/登录名
@@ -64,7 +64,7 @@ public class Users {
      *
      * @return id - 主键
      */
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
@@ -73,7 +73,7 @@ public class Users {
      *
      * @param id 主键
      */
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
