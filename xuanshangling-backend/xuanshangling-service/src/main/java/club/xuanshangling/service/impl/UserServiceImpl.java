@@ -32,7 +32,7 @@ public class UserServiceImpl implements UserService {
         User user = new User();
         user.setUsername(username);
         User result = userMapper.selectOne(user);
-        return result == null ? true : false;
+        return result == null ? false : true;
     }
 
     @Override

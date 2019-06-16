@@ -5,7 +5,7 @@ package club.xuanshangling.utils;
  * @Date: 2019/6/15 19:52
  * @Description:自定义所有controller的Json返回类型
  * code 说明：
-     * 200 成功
+     * 0 成功
      * 1000 自定义错误信息
      * 1001 异常
      * 1002
@@ -24,7 +24,7 @@ public class JsonResult {
     }
 
     public JsonResult(Object data) {
-        this.code = 200;
+        this.code = 0;
         this.msg = "ok";
         this.data = data;
     }
@@ -43,5 +43,29 @@ public class JsonResult {
 
     public static JsonResult errorMsg(String msg) {
         return new JsonResult(1001, msg, null);
+    }
+
+    public Integer getCode() {
+        return code;
+    }
+
+    public void setCode(Integer code) {
+        this.code = code;
+    }
+
+    public String getMsg() {
+        return msg;
+    }
+
+    public void setMsg(String msg) {
+        this.msg = msg;
+    }
+
+    public Object getData() {
+        return data;
+    }
+
+    public void setData(Object data) {
+        this.data = data;
     }
 }

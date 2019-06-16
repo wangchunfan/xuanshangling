@@ -5,6 +5,7 @@ import club.xuanshangling.service.UserService;
 import club.xuanshangling.utils.JsonResult;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,7 +23,7 @@ public class RegisterLoginController {
     @Autowired
     UserService userService;
 
-    @PutMapping("/register")
+    @PostMapping("/register")
     public JsonResult register(@RequestBody User user) throws NoSuchAlgorithmException {
         //判断账号密码不为空
         if (StringUtils.isBlank(user.getUsername()) || StringUtils.isBlank(user.getPassword()))
