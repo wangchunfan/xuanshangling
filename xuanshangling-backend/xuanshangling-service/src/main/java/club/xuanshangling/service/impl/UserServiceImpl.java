@@ -6,6 +6,7 @@ import club.xuanshangling.service.UserService;
 import club.xuanshangling.utils.MD5Utils;
 import org.n3r.idworker.Sid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,6 +17,7 @@ import java.util.Date;
  * @Author: wangcf
  * @Date: 2019/6/15 22:28
  */
+@Service
 public class UserServiceImpl implements UserService {
 
     @Autowired
