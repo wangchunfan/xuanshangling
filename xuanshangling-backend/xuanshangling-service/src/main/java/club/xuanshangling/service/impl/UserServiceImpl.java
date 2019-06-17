@@ -9,8 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import tk.mybatis.mapper.entity.Example;
+import tk.mybatis.mapper.entity.Example.Criteria;
 
-import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 
 /**
@@ -45,5 +46,16 @@ public class UserServiceImpl implements UserService {
         user.setCreateTime(new Date());
         user.setUpdateTime(new Date());
         userMapper.insert(user);
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.SUPPORTS)
+    public User queryUserForLogin(String username, String password) throws Exception {
+        Example example = new Example(User.class);
+        Criteria criteria = example.createCriteria();
+        criteria.andEqualTo("username", username);
+        criteria.andEqualTo("password", MD5Utils.getMD5Str(password));
+        User user = userMapper.selectOneByExample(example);
+        return user;
     }
 }

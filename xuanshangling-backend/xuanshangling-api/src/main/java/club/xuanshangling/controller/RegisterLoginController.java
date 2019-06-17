@@ -7,7 +7,6 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,7 +24,7 @@ public class RegisterLoginController {
     UserService userService;
 
     @PostMapping("/register")
-    @ApiOperation(value = "用户注册", notes = "用户注册post接口")
+    @ApiOperation(value = "用户注册", notes = "用户注册接口")
     public JsonResult register(@RequestBody User user) throws Exception {
         //判断账号密码不为空
         if (StringUtils.isBlank(user.getUsername()) || StringUtils.isBlank(user.getPassword()))
@@ -37,7 +36,22 @@ public class RegisterLoginController {
         //保存用户
         userService.saveUser(user);
         //密码脱敏
-        user.setPassword("");
+        user.setPassword(null);
+        return JsonResult.ok(user);
+    }
+
+    @PostMapping("/login")
+    @ApiOperation(value = "用户登录", notes = "用户登录接口")
+    public JsonResult login(@RequestBody User user) throws Exception {
+        //登录信息为空判断
+        if (StringUtils.isBlank(user.getUsername()) || StringUtils.isBlank(user.getPassword()))
+            return JsonResult.errorMsg("用户名或密码不能为空");
+        //用户名密码是否存在判断
+        user = userService.queryUserForLogin(user.getUsername(), user.getPassword());
+        if (user == null) {
+            return JsonResult.errorMsg("用户名或密码错误");
+        }
+        user.setPassword(null);
         return JsonResult.ok(user);
     }
 }

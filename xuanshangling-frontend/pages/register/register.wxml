@@ -1,4 +1,3 @@
-
 <form bindsubmit='doRegister'>
   <view>
     <label>用户名</label><input name="username" placeholder='请输入用户名'/>
@@ -9,6 +8,3 @@
     <button>返回登录</button>
   </view>
 </form>
-
-
-
