@@ -7,11 +7,10 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.security.NoSuchAlgorithmException;
 
 /**
  * @Author: wangcf
@@ -26,7 +25,7 @@ public class RegisterLoginController {
     UserService userService;
 
     @PostMapping("/register")
-    @ApiOperation(value = "用户注册",notes ="用户注册post接口")
+    @ApiOperation(value = "用户注册", notes = "用户注册post接口")
     public JsonResult register(@RequestBody User user) throws Exception {
         //判断账号密码不为空
         if (StringUtils.isBlank(user.getUsername()) || StringUtils.isBlank(user.getPassword()))
@@ -37,6 +36,8 @@ public class RegisterLoginController {
             return JsonResult.errorMsg("用户名已存在！");
         //保存用户
         userService.saveUser(user);
-        return JsonResult.ok();
+        //密码脱敏
+        user.setPassword("");
+        return JsonResult.ok(user);
     }
 }

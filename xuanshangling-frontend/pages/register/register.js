@@ -19,6 +19,8 @@ Page({
       },
       success: function(res){
         if (res.data.code == 0) {
+         app.userInfo = res.data.data;
+         console.log(app);
          wx.showToast({
            title: '注册成功'
          })
@@ -28,9 +30,6 @@ Page({
             icon: "none"
           })
         }
-      },
-      fail: function(res) {
-        console.log(res);
       }
     })
   }
