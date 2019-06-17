@@ -1,0 +1,8 @@
+<!--pages/info/info.wxml-->
+<view>
+  <text>pages/info/info.wxml</text> 
+</view>
+<view>
+  你好！！
+</view>
+

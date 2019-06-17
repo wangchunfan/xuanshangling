@@ -1,0 +1,14 @@
+
+<form bindsubmit='doRegister'>
+  <view>
+    <label>用户名</label><input name="username" placeholder='请输入用户名'/>
+    <label>密码</label><input name="password" type='password' placeholder='请输入密码'/>
+  </view>
+  <view>
+    <button form-type='submit'>注册</button>
+    <button>返回登录</button>
+  </view>
+</form>
+
+
+
