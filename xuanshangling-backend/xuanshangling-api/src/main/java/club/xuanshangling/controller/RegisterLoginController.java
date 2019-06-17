@@ -27,7 +27,7 @@ public class RegisterLoginController {
 
     @PostMapping("/register")
     @ApiOperation(value = "用户注册",notes ="用户注册post接口")
-    public JsonResult register(@RequestBody User user) throws NoSuchAlgorithmException {
+    public JsonResult register(@RequestBody User user) throws Exception {
         //判断账号密码不为空
         if (StringUtils.isBlank(user.getUsername()) || StringUtils.isBlank(user.getPassword()))
             return JsonResult.errorMsg("用户名或密码不能为空！");

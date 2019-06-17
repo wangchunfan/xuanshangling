@@ -20,5 +20,5 @@ public interface UserService {
      */
     boolean queryUsernameIsExists(String username);
 
-    void saveUser(User user) throws NoSuchAlgorithmException;
+    void saveUser(User user) throws Exception;
 }

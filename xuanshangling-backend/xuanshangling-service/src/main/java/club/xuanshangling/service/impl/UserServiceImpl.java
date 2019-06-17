@@ -37,7 +37,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
-    public void saveUser(User user) throws NoSuchAlgorithmException {
+    public void saveUser(User user) throws Exception {
         user.setId(sid.nextShort());
         user.setNickname(user.getUsername());
         user.setPassword(MD5Utils.getMD5Str(user.getPassword()));
