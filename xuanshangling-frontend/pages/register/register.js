@@ -9,7 +9,8 @@ Page({
       })
       return;
     }
-    console.log(app)
+    console.log(app);
+    wx.showLoading();
     wx.request({
       url: app.serverUrl + '/register',
       method: 'POST',
@@ -18,6 +19,7 @@ Page({
         password: data.password
       },
       success: function(res){
+        wx.hideLoading();
         if (res.data.code == 0) {
          app.userInfo = res.data.data;
          console.log(app);
@@ -31,6 +33,11 @@ Page({
           })
         }
       }
+    })
+  },
+  goLogin() {
+    wx.navigateTo({
+      url: '../login/login',
     })
   }
 })

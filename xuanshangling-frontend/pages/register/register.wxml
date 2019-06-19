@@ -5,6 +5,6 @@
   </view>
   <view>
     <button form-type='submit'>注册</button>
-    <button>返回登录</button>
+    <button bindtap='goLogin'>返回登录</button>
   </view>
 </form>
