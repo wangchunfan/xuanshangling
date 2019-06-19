@@ -1,15 +1,19 @@
 package club.xuanshangling.controller;
 
 import club.xuanshangling.pojo.User;
+import club.xuanshangling.pojo.vo.UserVO;
 import club.xuanshangling.service.UserService;
 import club.xuanshangling.utils.JsonResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.UUID;
 
 /**
  * @Author: wangcf
@@ -18,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @Api(value = "用户登录注册接口", tags = "登录注册controller")
-public class RegisterLoginController {
+public class RegisterLoginController extends BasicController {
 
     @Autowired
     UserService userService;
@@ -37,7 +41,8 @@ public class RegisterLoginController {
         userService.saveUser(user);
         //密码脱敏
         user.setPassword(null);
-        return JsonResult.ok(user);
+        UserVO userVO = setUserRedisSessionToken(user);
+        return JsonResult.ok(userVO);
     }
 
     @PostMapping("/login")
@@ -52,6 +57,19 @@ public class RegisterLoginController {
             return JsonResult.errorMsg("用户名或密码错误");
         }
         user.setPassword(null);
-        return JsonResult.ok(user);
+        UserVO userVO = setUserRedisSessionToken(user);
+        return JsonResult.ok(userVO);
+    }
+
+    public UserVO setUserRedisSessionToken(User user) {
+        //将UUID作为token
+        String uniqueToken = UUID.randomUUID().toString();
+        //将token存入Redis
+        redis.opsForValue().set(USER_REDIS_SESSION + ":" + user.getId(), uniqueToken);
+        //返回UserVO对象
+        UserVO userVO = new UserVO();
+        BeanUtils.copyProperties(user, userVO);
+        userVO.setUserToken(uniqueToken);
+        return userVO;
     }
 }
