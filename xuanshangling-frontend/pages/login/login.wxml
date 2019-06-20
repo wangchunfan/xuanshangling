@@ -1,0 +1,10 @@
+<form bindsubmit='doLogin'>
+  <view>
+    <label>用户名</label><input value='admin' name="username" placeholder='请输入用户名'/>
+    <label>密码</label><input value='admin' name="password" type='password' placeholder='请输入密码'/>
+  </view>
+  <view>
+    <button form-type='submit'>登录</button>
+    <button bindtap='goRegister'>没有账号？前往注册</button>
+  </view>
+</form>
