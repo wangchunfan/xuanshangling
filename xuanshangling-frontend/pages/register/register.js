@@ -26,6 +26,9 @@ Page({
          wx.showToast({
            title: '注册成功'
          })
+         wx.redirectTo({
+           url: '../mine/mine',
+         })
         } else{
           wx.showToast({
             title: res.data.msg,

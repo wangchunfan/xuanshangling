@@ -5,6 +5,7 @@ import club.xuanshangling.pojo.vo.UserVO;
 import club.xuanshangling.service.UserService;
 import club.xuanshangling.utils.JsonResult;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
@@ -61,6 +62,15 @@ public class RegisterLoginController extends BasicController {
         return JsonResult.ok(userVO);
     }
 
+    /**
+     * 功能描述
+     *
+     * @param * @param user
+     * @return club.xuanshangling.pojo.vo.UserVO
+     * @author yanfan
+     * @date 2019/6/20
+     * @description 设置session
+     */
     public UserVO setUserRedisSessionToken(User user) {
         //将UUID作为token
         String uniqueToken = UUID.randomUUID().toString();
@@ -72,4 +82,19 @@ public class RegisterLoginController extends BasicController {
         userVO.setUserToken(uniqueToken);
         return userVO;
     }
+
+    @PostMapping("/logout")
+    @ApiOperation(value = "用户注销", notes = "用户注销接口")
+    @ApiImplicitParam(value = "用户ID", name = "userId", dataType = "String", paramType = "query", required = true)
+    public JsonResult logout(String userId) {
+        //删除session
+        boolean result = redis.delete(USER_REDIS_SESSION + ":" + userId);
+        if (result) {
+            return JsonResult.ok();
+        } else {
+            return JsonResult.errorMsg("注销失败");
+        }
+
+    }
+
 }
