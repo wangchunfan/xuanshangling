@@ -33,20 +33,22 @@ public class UserController extends BasicController {
     @Autowired
     UserService userService;
 
-    @PostMapping("/uploadFace")
+    @PostMapping(value = "/uploadFace", headers = "content-type=multipart/form-data")
     @ApiOperation(value = "上传头像", notes = "上传用户头像")
     @ApiImplicitParam(name = "userId", value = "用户ID", required = true, dataType = "String", paramType = "query")
-    public JsonResult uploadFace(String userId, @RequestParam("file") MultipartFile[] files) {
+    public JsonResult uploadFace(String userId,
+                                 @ApiParam(value = "头像文件", required = true)
+                                         MultipartFile file) {
         //设置文件在服务器上的命名空间 格式：当前项目/files/userid/face/XXX.JPG
         //String fileSpacePath = "E:/wx/xuanshangling/xuanshangling-backend/files";
         String fileSpacePath = "files";
         if (StringUtils.isBlank(userId))
             return JsonResult.errorMsg("用户id不能为空");
-        if (files == null || files.length <= 0)
+        if (file == null)
             return JsonResult.errorMsg("文件错误");
-        String fileName = files[0].getOriginalFilename();
+        String fileName = file.getOriginalFilename();
         if (StringUtils.isBlank(fileName))
-            return JsonResult.errorMsg("文件错误");
+            return JsonResult.errorMsg("文件名不能为空");
 
         //设置文件保存到数据库中的相对位置
         String dbPath = "/" + userId + "/face/" + fileName;
@@ -63,7 +65,7 @@ public class UserController extends BasicController {
                 outFile.getParentFile().mkdirs();
             //写入文件到服务器
             fileOutputStream = new FileOutputStream(outFile);
-            inputStream = files[0].getInputStream();
+            inputStream = file.getInputStream();
             IOUtils.copy(inputStream, fileOutputStream);
 
             //将文件相对路径保存到数据库中
@@ -94,8 +96,7 @@ public class UserController extends BasicController {
 
     @ApiOperation(value = "获取用户信息", notes = "获取用户个人信息")
     @GetMapping("/query/{userId}")
-    @ApiParam(name = "userId" ,value = "用户id")
-    public JsonResult query(@PathVariable String userId) {
+    public JsonResult query(@PathVariable @ApiParam(name = "userId", value = "用户id") String userId) {
         if (StringUtils.isBlank(userId))
             return JsonResult.errorMsg("用户id不能为空");
         User user = userService.queryUserById(userId);
