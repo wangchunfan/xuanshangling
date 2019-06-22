@@ -1,7 +1,35 @@
 const app = getApp();
 Page({
   data: {
-    faceUrl: "../../images/face-default.jpg"
+    faceUrl: "../../images/face-default.jpg",
+    nickname: "",
+    creditScore: "-"
+  },
+  onLoad() {
+    var that = this;
+    //获取个人信息
+    wx.request({
+      url: app.serverUrl + '/user/query/' + app.userInfo.id,
+      success: res => {
+        if(res.data.code == 0) {
+          var userInfo = res.data.data;
+          if(userInfo.faceImage) {
+            that.setData({
+              faceUrl: app.serverUrl + userInfo.faceImage,
+            })
+          }
+          that.setData({
+            nickname: userInfo.nickname,
+            creditScore: userInfo.creditScore
+          })
+        }else {
+          wx.showToast({
+            title: res.date.msg,
+          })
+        }
+      }
+    })
+
   },
   //更改头像
   changeFace() {
@@ -27,7 +55,7 @@ Page({
                 title: '上传成功！',
               })
               that.setData({
-                faceUrl: data.data
+                faceUrl: app.serverUrl + data.data
               })
 
             }else {

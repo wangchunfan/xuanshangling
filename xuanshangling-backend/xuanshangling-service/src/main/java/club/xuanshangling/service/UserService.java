@@ -27,12 +27,30 @@ public interface UserService {
     void saveUser(User user) throws Exception;
 
     /**
+     * @param *        @param username
+     * @param password
+     * @return club.xuanshangling.pojo.User
      * @author yanfan
      * @date 2019/6/17
-     * @param  * @param username
-     * @param password
-     * @return boolean
-     * @description 用户登录，判断用户名账号密码是否存在
+     * @description 用户登录，根据用户名和密码查询用户
      */
     User queryUserForLogin(String username, String password) throws Exception;
+
+    /**
+     * @param * @param userId
+     * @return club.xuanshangling.pojo.User
+     * @author yanfan
+     * @date 2019/6/22
+     * @description
+     */
+    User queryUserById(String userId);
+
+    /**
+     * @param * @param
+     * @return void
+     * @author yanfan
+     * @date 2019/6/22
+     * @description 更新用户
+     */
+    void update(User user);
 }

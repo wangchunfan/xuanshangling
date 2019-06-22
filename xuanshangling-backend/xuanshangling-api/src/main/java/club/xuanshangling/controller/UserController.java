@@ -1,15 +1,18 @@
 package club.xuanshangling.controller;
 
+import club.xuanshangling.pojo.User;
+import club.xuanshangling.pojo.vo.UserVO;
+import club.xuanshangling.service.UserService;
 import club.xuanshangling.utils.JsonResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
@@ -26,6 +29,9 @@ import java.io.InputStream;
 @Api(value = "用户业务相关的接口", tags = "用户业务controller")
 @RequestMapping("/user")
 public class UserController extends BasicController {
+
+    @Autowired
+    UserService userService;
 
     @PostMapping("/uploadFace")
     @ApiOperation(value = "上传头像", notes = "上传用户头像")
@@ -61,7 +67,10 @@ public class UserController extends BasicController {
             IOUtils.copy(inputStream, fileOutputStream);
 
             //将文件相对路径保存到数据库中
-
+            User user = new User();
+            user.setId(userId);
+            user.setFaceImage(dbPath);
+            userService.update(user);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -82,4 +91,17 @@ public class UserController extends BasicController {
         return JsonResult.ok(dbPath);
 
     }
+
+    @ApiOperation(value = "获取用户信息", notes = "获取用户个人信息")
+    @GetMapping("/query/{userId}")
+    @ApiParam(name = "userId" ,value = "用户id")
+    public JsonResult query(@PathVariable String userId) {
+        if (StringUtils.isBlank(userId))
+            return JsonResult.errorMsg("用户id不能为空");
+        User user = userService.queryUserById(userId);
+        UserVO userVO = new UserVO();
+        BeanUtils.copyProperties(user, userVO);
+        return JsonResult.ok(userVO);
+    }
+
 }

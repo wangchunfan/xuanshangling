@@ -58,4 +58,18 @@ public class UserServiceImpl implements UserService {
         User user = userMapper.selectOneByExample(example);
         return user;
     }
+
+
+    @Override
+    @Transactional(propagation = Propagation.SUPPORTS)
+    public User queryUserById(String userId) {
+        User user = new User();
+        user.setId(userId);
+        return userMapper.selectOne(user);
+    }
+
+    @Override
+    public void update(User user) {
+        userMapper.updateByPrimaryKeySelective(user);
+    }
 }

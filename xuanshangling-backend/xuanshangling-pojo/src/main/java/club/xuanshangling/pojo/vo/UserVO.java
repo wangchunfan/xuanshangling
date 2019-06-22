@@ -1,5 +1,6 @@
 package club.xuanshangling.pojo.vo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import java.util.Date;
@@ -25,6 +26,7 @@ public class UserVO {
     /**
      * 密码
      */
+    @JsonIgnore
     private String password;
 
     /**
