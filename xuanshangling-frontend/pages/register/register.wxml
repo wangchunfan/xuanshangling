@@ -1,10 +1,33 @@
-<form bindsubmit='doRegister'>
-  <view>
-    <label>用户名</label><input name="username" placeholder='请输入用户名'/>
-    <label>密码</label><input name="password" type='password' placeholder='请输入密码'/>
+<view>
+
+  <view class="login-icon">
+    <image class="login-img" src='../../images/login-register.jpg'></image>
   </view>
-  <view>
-    <button form-type='submit'>注册</button>
-    <button bindtap='goLogin'>返回登录</button>
+
+  <view class='login-form'>
+    <form bindsubmit='doRegister'>
+
+      <view class="inputView">
+        <image class='nameImage' src="../../images/user.png"></image>
+        <label class="loginLabel">账号</label>
+        <input name="username" class="inputText" placeholder='请输入用户名'/>
+      </view>
+
+      <view class='line'></view>
+
+      <view class="inputView">
+        <image class='keyImage' src='../../images/password.png' ></image>
+        <label class="loginLabel">密码</label>
+        <input name="password" class="inputText" type='password' placeholder='请输入密码'/>
+      </view>
+
+      <view>
+        <button type='primary' class='registerBtn' form-type='submit'>注册</button>
+      </view>
+
+      <view>
+        <button type='warn' class='goLoginBtn' bindtap='goLogin'>返回登录</button>
+      </view>
+    </form>
   </view>
-</form>
+</view>

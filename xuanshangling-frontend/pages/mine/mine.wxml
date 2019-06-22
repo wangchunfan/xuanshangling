@@ -1,8 +1,15 @@
 <view class='container'>
   <image bindtap='changeFace' src='{{faceUrl}}' mode='aspectFit' class='face'></image>
   <block>
-    <button bindtap='doLogout' >注销</button>
+    <text class='nickname'>{{nickname}}</text>
   </block>
 
+  <block>
+    <button size='mini' class='logout' bindtap='doLogout' >注销</button>
+  </block>
+
+  <view class='container-row'>
+    <label class='info-items'>信用积分 {{creditScore}}</label>
+  </view>
 </view>
 

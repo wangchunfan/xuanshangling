@@ -1,6 +1,35 @@
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  background-color: whitesmoke;
+} 
+
+
 .face {
     width: 180rpx;
     height: 180rpx;
     border-radius: 50%;
     margin-top: 20px;
+}
+
+.nickname {
+    margin-top: 5px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.logout {
+    margin-top: 3px;
+    float: right;
+}
+
+.container-row {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+    margin-top: 10px;
 }
