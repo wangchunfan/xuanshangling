@@ -2,8 +2,14 @@ package club.xuanshangling.service.impl;
 
 import club.xuanshangling.enums.RewardStatusEnum;
 import club.xuanshangling.mapper.RewardMapper;
+import club.xuanshangling.mapper.RewardVOMapper;
 import club.xuanshangling.pojo.Reward;
+import club.xuanshangling.pojo.vo.RewardVO;
+import club.xuanshangling.pojo.vo.UserVO;
 import club.xuanshangling.service.RewardService;
+import club.xuanshangling.service.UserHelper;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.n3r.idworker.Sid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,6 +17,8 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @Author: wangcf
@@ -24,7 +32,14 @@ public class RewardServiceImpl implements RewardService {
     RewardMapper rewardMapper;
 
     @Autowired
+    RewardVOMapper rewardVOMapper;
+
+    @Autowired
     Sid sid;
+
+    @Autowired
+    UserHelper userHelper;
+
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
@@ -41,4 +56,24 @@ public class RewardServiceImpl implements RewardService {
         reward.setUpdateTime(new Date());
         rewardMapper.insert(reward);
     }
+
+    @Override
+    @Transactional(propagation = Propagation.SUPPORTS)
+    public PageInfo<RewardVO> page(Integer pageNum, Integer pageSize) {
+        PageHelper.startPage(pageNum, pageSize);
+        List<RewardVO> rewardVOList = rewardVOMapper.queryPage();
+
+        PageInfo<RewardVO> rewardVOPageInfo = new PageInfo<>(rewardVOList);
+
+        Map<String, UserVO> userCache = userHelper.getUserCache();
+
+        rewardVOPageInfo.getList().stream().forEach(e ->
+                e.setUserVO(
+                        userCache.get(e.getUserId())
+                )
+        );
+
+        return rewardVOPageInfo;
+    }
+
 }

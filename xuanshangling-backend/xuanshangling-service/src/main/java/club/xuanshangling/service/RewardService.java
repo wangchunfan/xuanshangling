@@ -1,6 +1,8 @@
 package club.xuanshangling.service;
 
 import club.xuanshangling.pojo.Reward;
+import club.xuanshangling.pojo.vo.RewardVO;
+import com.github.pagehelper.PageInfo;
 
 /**
  * @Author: wangcf
@@ -29,4 +31,16 @@ public interface RewardService {
      * @description 发布新的悬赏令
      */
     void insert(Reward reward);
+
+    /**
+     * 功能描述
+     *
+     * @param pageNum
+     * @param pageSize
+     * @return club.xuanshangling.utils.PageResult
+     * @author yanfan
+     * @date 2019/6/24
+     * @description 获取所有悬赏令
+     */
+    public PageInfo<RewardVO> page(Integer pageNum, Integer pageSize);
 }
