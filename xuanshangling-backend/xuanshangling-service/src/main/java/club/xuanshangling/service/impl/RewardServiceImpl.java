@@ -29,16 +29,16 @@ import java.util.Map;
 public class RewardServiceImpl implements RewardService {
 
     @Autowired
-    RewardMapper rewardMapper;
+    private RewardMapper rewardMapper;
 
     @Autowired
-    RewardVOMapper rewardVOMapper;
+    private RewardVOMapper rewardVOMapper;
 
     @Autowired
-    Sid sid;
+    private Sid sid;
 
     @Autowired
-    UserHelper userHelper;
+    private UserHelper userHelper;
 
 
     @Override

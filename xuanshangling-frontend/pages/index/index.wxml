@@ -1,0 +1,14 @@
+<view wx:for = '{{rewardList}}' class='item-container' wx:key='index'>
+    <view style='width:{{screenWidth}}px;' class='back-img' data-arrindex='{{index}}'> 
+      <text>{{item.rewardTitle}}</text>
+      <view class='line'></view>
+      <text>{{item.rewardContent}}</text>
+    </view> 
+    <view class='line'></view>
+    <view class="desc">
+        <view class="faceName">
+            <image class='myface' src="{{serverUrl}}{{item.userVO.faceImage}}"></image>
+            <view class="nickname">{{item.userVO.nickname}}</view>
+        </view>
+    </view>
+</view>

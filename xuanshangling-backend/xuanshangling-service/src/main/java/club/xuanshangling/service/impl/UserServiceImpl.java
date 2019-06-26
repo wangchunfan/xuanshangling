@@ -22,10 +22,10 @@ import java.util.Date;
 public class UserServiceImpl implements UserService {
 
     @Autowired
-    UserMapper userMapper;
+    private UserMapper userMapper;
 
     @Autowired
-    Sid sid;
+    private Sid sid;
 
     @Override
     @Transactional(propagation = Propagation.SUPPORTS)
