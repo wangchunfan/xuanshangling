@@ -7,6 +7,7 @@
         <id column="id" property="id" jdbcType="VARCHAR"/>
         <result column="reward_title" property="rewardTitle" jdbcType="VARCHAR"/>
         <result column="reward_content" property="rewardContent" jdbcType="VARCHAR"/>
+        <result column="reward_price" property="rewardPrice" jdbcType="DECIMAL"/>
         <result column="start_time" property="startTime" jdbcType="TIMESTAMP"/>
         <result column="end_time" property="endTime" jdbcType="TIMESTAMP"/>
         <result column="user_id" property="userId" jdbcType="VARCHAR"/>
@@ -17,6 +18,6 @@
     </resultMap>
 
     <select id="queryPage" resultMap="BaseResultMap">
-      select r.* from reward r
+      select r.* from reward r order by create_time desc
     </select>
 </mapper>

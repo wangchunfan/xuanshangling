@@ -5,7 +5,7 @@ Page({
     serverUrl: app.serverUrl,
     rewardList:[],
     pageNum: 1,
-    pageSize: 4,
+    pageSize: 5,
     pages: 0
   },
   onLoad: function(){

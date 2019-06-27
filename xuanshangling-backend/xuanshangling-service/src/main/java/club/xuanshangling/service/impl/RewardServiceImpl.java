@@ -67,10 +67,11 @@ public class RewardServiceImpl implements RewardService {
 
         Map<String, UserVO> userCache = userHelper.getUserCache();
 
-        rewardVOPageInfo.getList().stream().forEach(e ->
-                e.setUserVO(
-                        userCache.get(e.getUserId())
-                )
+        rewardVOPageInfo.getList().stream().forEach(e -> {
+                    e.setUserVO(userCache.get(e.getUserId()));
+                    if (e.getRewardContent().length() > 100)
+                        e.setRewardContent(e.getRewardContent().substring(0, 100) + "...");
+                }
         );
 
         return rewardVOPageInfo;
