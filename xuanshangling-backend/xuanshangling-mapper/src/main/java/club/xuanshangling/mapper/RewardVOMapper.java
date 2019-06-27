@@ -13,4 +13,6 @@ import java.util.List;
 public interface RewardVOMapper extends MyMapper<RewardVO> {
 
     List<RewardVO> queryPage();
+
+    RewardVO getRewardDetial(String id);
 }

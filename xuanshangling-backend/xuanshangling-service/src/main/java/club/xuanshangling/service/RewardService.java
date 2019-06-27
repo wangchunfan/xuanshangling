@@ -42,5 +42,15 @@ public interface RewardService {
      * @date 2019/6/24
      * @description 获取所有悬赏令
      */
-    public PageInfo<RewardVO> page(Integer pageNum, Integer pageSize);
+    PageInfo<RewardVO> page(Integer pageNum, Integer pageSize);
+
+    /**
+     *功能描述 
+     * @author yanfan
+     * @date 2019/6/27
+     * @param  * @param id 
+     * @return club.xuanshangling.pojo.vo.RewardVO
+     * @description 获取悬赏的详情
+     */
+    RewardVO get(String id);
 }

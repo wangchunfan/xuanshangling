@@ -23,22 +23,22 @@
                 </a>
                 <image class="item-more" mode="aspectFit" src="../../images/more.png"></image>
             </view>
-            <view class="feed-content">
-                <view class="question" qid="{{question_id}}" bindtap="bindQueTap">
+            <view class="feed-content" bindtap='goDetial' data-id='{{item.id}}'>
+                <view class="question">
                     <a class="question-link">
                         <text>{{item.rewardTitle}}</text>
                     </a>
                 </view>
                 <view class="answer-body">
-                    <view bindtap="bindItemTap">
+                    <view>
                         <text class="answer-txt" >{{item.rewardContent}}</text>
                     </view>
-                    <view class="answer-actions" bindtap="bindItemTap">
+                    <view class="answer-actions">
                         <view class="like dot">
                             <a>{{item.createTime}} 发布 </a>
                         </view>
                         <view class="comments dot">
-                            <a>12 浏览 </a>
+                            <a>? 浏览 </a>
                         </view>
                         <view class="follow-it">
                             <a>￥{{item.rewardPrice}}</a>

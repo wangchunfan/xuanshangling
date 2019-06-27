@@ -47,4 +47,11 @@ public class RewardController extends BasicController {
         PageInfo<RewardVO> rewardVOPageInfo = rewardService.page(pageNum, pageSize);
         return JsonResult.ok(rewardVOPageInfo);
     }
+
+    @ApiOperation("详细信息")
+    @GetMapping("/{id}")
+    public JsonResult get(@ApiParam("悬赏令id") @PathVariable String id) {
+        RewardVO rewardVO = rewardService.get(id);
+        return JsonResult.ok(rewardVO);
+    }
 }

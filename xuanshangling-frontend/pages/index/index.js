@@ -72,5 +72,12 @@ Page({
         }
       }
     })
+  },
+  //跳转到详情页面
+  goDetial(i){
+    var rewardId = i.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: '../detail/detail?id='+rewardId,
+    })
   }
 })

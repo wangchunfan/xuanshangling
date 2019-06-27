@@ -20,4 +20,8 @@
     <select id="queryPage" resultMap="BaseResultMap">
       select r.* from reward r order by create_time desc
     </select>
+
+    <select id="getRewardDetial" resultMap="BaseResultMap">
+        select r.* from reward r where r.id = #{id}
+    </select>
 </mapper>

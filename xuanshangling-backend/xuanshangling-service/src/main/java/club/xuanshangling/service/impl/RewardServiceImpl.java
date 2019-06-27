@@ -77,4 +77,13 @@ public class RewardServiceImpl implements RewardService {
         return rewardVOPageInfo;
     }
 
+    @Override
+    public RewardVO get(String id) {
+
+        RewardVO rewardVO = rewardVOMapper.getRewardDetial(id);
+        Map<String, UserVO> userCache = userHelper.getUserCache();
+        rewardVO.setUserVO(userCache.get(rewardVO.getUserId()));
+        return rewardVO;
+    }
+
 }
