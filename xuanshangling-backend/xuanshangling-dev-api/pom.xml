@@ -9,12 +9,12 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>xunshangling-api</artifactId>
+    <artifactId>xunshangling-dev-api</artifactId>
 
     <dependencies>
         <dependency>
             <groupId>club.xuanshangling</groupId>
-            <artifactId>xuanshangling-pojo</artifactId>
+            <artifactId>xuanshangling-dev-pojo</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
@@ -30,13 +30,13 @@
         </dependency>
         <dependency>
             <groupId>club.xuanshangling</groupId>
-            <artifactId>xuanshangling-service</artifactId>
+            <artifactId>xuanshangling-dev-service</artifactId>
             <version>0.0.1-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>club.xuanshangling</groupId>
-            <artifactId>xunshangling-common</artifactId>
+            <artifactId>xunshangling-dev-common</artifactId>
             <version>0.0.1-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>

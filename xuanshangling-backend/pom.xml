@@ -4,11 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
 	<packaging>pom</packaging>
 	<modules>
-		<module>xuanshangling-common</module>
-		<module>xuanshangling-pojo</module>
-		<module>xuanshangling-mapper</module>
-		<module>xuanshangling-api</module>
-		<module>xuanshangling-service</module>
+		<module>xuanshangling-dev-common</module>
+		<module>xuanshangling-dev-pojo</module>
+		<module>xuanshangling-dev-mapper</module>
+		<module>xuanshangling-dev-api</module>
+		<module>xuanshangling-dev-service</module>
 	</modules>
 
 	<parent>

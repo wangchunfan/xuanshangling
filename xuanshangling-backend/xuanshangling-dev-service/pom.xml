@@ -9,17 +9,17 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>xuanshangling-service</artifactId>
+    <artifactId>xuanshangling-dev-service</artifactId>
     <dependencies>
         <dependency>
             <groupId>club.xuanshangling</groupId>
-            <artifactId>xuanshangling-pojo</artifactId>
+            <artifactId>xuanshangling-dev-pojo</artifactId>
             <version>0.0.1-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>club.xuanshangling</groupId>
-            <artifactId>xunshangling-mapper</artifactId>
+            <artifactId>xunshangling-dev-mapper</artifactId>
             <version>0.0.1-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>

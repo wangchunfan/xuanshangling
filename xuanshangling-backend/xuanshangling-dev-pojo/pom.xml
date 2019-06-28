@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>xuanshangling-pojo</artifactId>
+    <artifactId>xuanshangling-dev-pojo</artifactId>
     <dependencies>
         <dependency>
             <groupId>javax.persistence</groupId>

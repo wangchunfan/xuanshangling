@@ -35,10 +35,8 @@ public class RewardController extends BasicController {
     @ApiOperation("分页查询")
     public JsonResult page(
             @ApiParam(value = "当前页", example = "1")
-            @RequestParam
                     Integer pageNum,
             @ApiParam(value = "每页数量", example = "5")
-            @RequestParam
                     Integer pageSize) {
         if (pageNum == null)
             pageNum = 1;
