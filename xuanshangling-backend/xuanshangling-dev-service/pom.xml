@@ -19,7 +19,7 @@
         </dependency>
         <dependency>
             <groupId>club.xuanshangling</groupId>
-            <artifactId>xunshangling-dev-mapper</artifactId>
+            <artifactId>xuanshangling-dev-mapper</artifactId>
             <version>0.0.1-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
