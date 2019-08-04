@@ -12,7 +12,7 @@ import tk.mybatis.spring.annotation.MapperScan;
  */
 @SpringBootApplication
 @MapperScan(basePackages = "club.xuanshangling.mapper")
-@ComponentScan(basePackages = {"club.xuanshangling", "org.n3r.idworker"})
+@ComponentScan(basePackages = {"club.xuanshangling", "org.n3r.idworker", "pdd"})
 public class ApiApplication {
 
     public static void main(String[] args) {

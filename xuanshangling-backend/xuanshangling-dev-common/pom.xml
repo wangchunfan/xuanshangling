@@ -67,6 +67,13 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
+        <!-- 拼多多-->
+        <dependency>
+            <groupId>com.pdd</groupId>
+            <artifactId>pop-sdk-all</artifactId>
+            <version>0.0.2</version>
+        </dependency>
+
     </dependencies>
 
 </project>

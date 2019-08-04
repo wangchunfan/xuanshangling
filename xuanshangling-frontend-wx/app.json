@@ -1,17 +1,23 @@
 {
   "pages": [
+    "pages/home/home",
     "pages/index/index",
     "pages/publish/publish",
     "pages/mine/mine",
     "pages/register/register",
     "pages/detail/detail",
-    "pages/login/login"
+    "pages/login/login",
+    "pages/goods",
+    "pages/goods/goods",
+    "pages/theme/theme"
   ],
   "window": {
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#0068C4",
-    "navigationBarTitleText": "悬赏令",
-    "navigationBarTextStyle": "black"
+    "navigationBarBackgroundColor": "#FFFFFF",
+    "navigationBarTitleText": "言凡",
+    "enablePullDownRefresh": true,
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#FFFFFF",
+    "backgroundTextStyle": "dark"
   },
   "sitemapLocation": "sitemap.json",
   "tabBar": {
@@ -22,25 +28,15 @@
     "list": [
       {
         "pagePath": "pages/index/index",
-        "text": "首页",
-        "iconPath": "images/index.png",
-        "selectedIconPath": "images/index_focus.png"
-      },
-      {
-        "pagePath": "pages/publish/publish",
-        "text": "发布",
-        "iconPath": "images/publish.png",
-        "selectedIconPath": "images/publish_focus.png"
+        "iconPath": "static/images/home.png",
+        "selectedIconPath": "static/images/home@selected.png",
+        "text": "首页"
       },
       {
         "pagePath": "pages/mine/mine",
-        "text": "我的",
-        "iconPath": "images/mine.png",
-        "selectedIconPath": "images/index_focus.png"
-      },
-      {
-        "pagePath": "pages/login/login",
-        "text": "登录"
+        "iconPath": "static/images/my.png",
+        "selectedIconPath": "static/images/my@selected.png",
+        "text": "个人"
       }
     ]
   }
