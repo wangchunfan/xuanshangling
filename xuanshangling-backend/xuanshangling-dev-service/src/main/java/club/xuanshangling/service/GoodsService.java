@@ -1,7 +1,8 @@
 package club.xuanshangling.service;
 
 import java.util.List;
+import java.util.Map;
 
 public interface GoodsService {
-    String goodsDetail(Long id);
+    Map goodsDetail(Long id);
 }

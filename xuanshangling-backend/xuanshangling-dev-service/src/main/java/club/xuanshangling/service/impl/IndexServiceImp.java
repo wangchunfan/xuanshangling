@@ -1,6 +1,6 @@
 package club.xuanshangling.service.impl;
 
-import club.xuanshangling.service.HomeService;
+import club.xuanshangling.service.IndexService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pdd.PddClient;
@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Service
-public class HomeServiceImp implements HomeService {
+public class IndexServiceImp implements IndexService {
 
     @Autowired
     PddClient pddClient;

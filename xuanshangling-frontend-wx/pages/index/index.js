@@ -21,7 +21,7 @@ Page({
     var that = this;
     wx.showNavigationBarLoading();
     wx.request({
-      url: app.serverUrl + '/home/onLoad',
+      url: app.serverUrl + '/index/onLoad',
       success: res => {
         wx.stopPullDownRefresh();
         wx.hideNavigationBarLoading();

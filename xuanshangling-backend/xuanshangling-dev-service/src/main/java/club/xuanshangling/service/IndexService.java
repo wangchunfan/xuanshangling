@@ -2,7 +2,7 @@ package club.xuanshangling.service;
 
 import java.util.Map;
 
-public interface HomeService {
+public interface IndexService {
     /**
      * 进入首页渲染的内容
      *

@@ -3,14 +3,8 @@ package pdd;
 import com.pdd.pop.sdk.common.util.JsonUtil;
 import com.pdd.pop.sdk.http.PopClient;
 import com.pdd.pop.sdk.http.PopHttpClient;
-import com.pdd.pop.sdk.http.api.request.PddDdkGoodsDetailRequest;
-import com.pdd.pop.sdk.http.api.request.PddDdkGoodsSearchRequest;
-import com.pdd.pop.sdk.http.api.request.PddDdkThemeListGetRequest;
-import com.pdd.pop.sdk.http.api.request.PddDdkTopGoodsListQueryRequest;
-import com.pdd.pop.sdk.http.api.response.PddDdkGoodsDetailResponse;
-import com.pdd.pop.sdk.http.api.response.PddDdkGoodsSearchResponse;
-import com.pdd.pop.sdk.http.api.response.PddDdkThemeListGetResponse;
-import com.pdd.pop.sdk.http.api.response.PddDdkTopGoodsListQueryResponse;
+import com.pdd.pop.sdk.http.api.request.*;
+import com.pdd.pop.sdk.http.api.response.*;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -124,10 +118,34 @@ public class PddClient {
      * @param goods_id_list
      * @return
      */
-    public String goodsDetail(List<Long> goods_id_list) {
+    public String goodsDetail(Long goods_id_list) {
         PddDdkGoodsDetailRequest request = new PddDdkGoodsDetailRequest();
-        request.setGoodsIdList(goods_id_list);
+        List<Long> goodsIdList = new ArrayList<>();
+        goodsIdList.add(goods_id_list);
+        request.setGoodsIdList(goodsIdList);
         PddDdkGoodsDetailResponse response = null;
+        try {
+            response = client.syncInvoke(request);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return JsonUtil.transferToJson(response);
+    }
+
+    public String goodsPromotionUrlGenerate(String p_id, Long goods_id_list) {
+        PddDdkGoodsPromotionUrlGenerateRequest request = new PddDdkGoodsPromotionUrlGenerateRequest();
+        request.setPId(p_id);
+        List<Long> goodsIdList = new ArrayList<Long>();
+        goodsIdList.add(goods_id_list);
+        request.setGoodsIdList(goodsIdList);
+//        request.setGenerateShortUrl(false);
+//        request.setMultiGroup(false);
+//        request.setCustomParameters("str");
+        request.setGenerateWeappWebview(true);
+//        request.setZsDuoId(0L);
+        request.setGenerateWeApp(true);
+//        request.setGenerateWeiboappWebview(false);
+        PddDdkGoodsPromotionUrlGenerateResponse response = null;
         try {
             response = client.syncInvoke(request);
         } catch (Exception e) {

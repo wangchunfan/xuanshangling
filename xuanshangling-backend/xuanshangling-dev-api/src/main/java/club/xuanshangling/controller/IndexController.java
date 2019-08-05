@@ -1,24 +1,21 @@
 package club.xuanshangling.controller;
 
-import club.xuanshangling.service.HomeService;
+import club.xuanshangling.service.IndexService;
 import club.xuanshangling.utils.JsonResult;
 import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiModelProperty;
 import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
 @RestController
-@RequestMapping("/home")
+@RequestMapping("/index")
 @Api(value = "首页接口", tags = "首页接口")
-public class HomeController extends BasicController {
+public class IndexController extends BasicController {
 
     @Autowired
-    HomeService homeService;
+    IndexService homeService;
 
     @GetMapping("/onLoad")
     @ApiOperation(value = "首页数据加载", notes = "首页数据加载")
