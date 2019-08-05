@@ -1,7 +1,7 @@
 //app.js
 App({
   userInfo: null,
-  serverUrl: "http://localhost:8001",
+  serverUrl: "https://xuanshangling.club/dev/",
 
   onLaunch: function () {
     // 展示本地存储能力

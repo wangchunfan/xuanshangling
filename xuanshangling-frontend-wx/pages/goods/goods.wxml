@@ -57,7 +57,7 @@
   <!-- 商品详情 -->
   <view class="detail">
     <view wx:for="{{goods_detail.goods_gallery_urls}}" wx:key="index">
-      <image mode="aspectFit" src="{{item}}"></image>
+      <image mode="aspectFill" src="{{item}}"></image>
     </view>
   </view>
 

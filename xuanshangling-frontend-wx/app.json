@@ -1,15 +1,7 @@
 {
   "pages": [
-    "pages/home/home",
     "pages/index/index",
-    "pages/publish/publish",
-    "pages/mine/mine",
-    "pages/register/register",
-    "pages/detail/detail",
-    "pages/login/login",
-    "pages/goods",
-    "pages/goods/goods",
-    "pages/theme/theme"
+    "pages/goods/goods"
   ],
   "window": {
     "navigationBarBackgroundColor": "#FFFFFF",
@@ -19,25 +11,5 @@
     "backgroundColor": "#FFFFFF",
     "backgroundTextStyle": "dark"
   },
-  "sitemapLocation": "sitemap.json",
-  "tabBar": {
-    "color": "#626567",
-    "selectedColor": "#2A8CE5",
-    "backgroundColor": "#FBFBFB",
-    "borderStyle": "white",
-    "list": [
-      {
-        "pagePath": "pages/index/index",
-        "iconPath": "static/images/home.png",
-        "selectedIconPath": "static/images/home@selected.png",
-        "text": "首页"
-      },
-      {
-        "pagePath": "pages/mine/mine",
-        "iconPath": "static/images/my.png",
-        "selectedIconPath": "static/images/my@selected.png",
-        "text": "个人"
-      }
-    ]
-  }
+  "sitemapLocation": "sitemap.json"
 }
