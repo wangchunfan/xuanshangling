@@ -241,7 +241,7 @@
   display: block;
   color: #333;
   line-height: 50rpx;
-  font-size: 30rpx;
+  font-size: 24rpx;
 }
 
 .a-groupon .capsule-tag {
