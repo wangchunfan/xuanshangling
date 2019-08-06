@@ -10,9 +10,9 @@
 
   <swiper class="banner" indicator-dots="true" autoplay="true" interval="3000" duration="1000">
     <swiper-item wx:for="{{theme_list}}" wx:key="id">
-      <!-- <navigator url="{{item.link}}"> -->
-      <image src="{{item.image_url}}" background-size="cover"></image>
-      <!-- </navigator> -->
+      <navigator url="/pages/theme/theme?theme_id={{item.id}}&image_url={{item.image_url}}&name={{item.name}}">
+        <image src="{{item.image_url}}" background-size="cover"></image>
+      </navigator>
     </swiper-item>
   </swiper>
 
@@ -65,7 +65,7 @@
     <view class="b">
       <view class="item" wx:for="{{goods_list}}" wx:for-index="index" wx:for-item="item" wx:key="id">
         <navigator url="/pages/goods/goods?goods_id={{item.goods_id}}">
-          <image class="img" src="{{item.goods_thumbnail_url}}" background-size="cover"></image>
+          <image lazy-load="{{true}}" class="img" src="{{item.goods_thumbnail_url}}" background-size="cover"></image>
           <view class="right">
             <view class="text">
               <view class="header">
@@ -86,7 +86,7 @@
     </view>
   </view>
 
-  <view class="bottom" wx:if="{{isBottom}}" >
+  <view class="bottom" wx:if="{{isBottom}}">
     <text>———— 我是有底线的 ———— </text>
   </view>
 

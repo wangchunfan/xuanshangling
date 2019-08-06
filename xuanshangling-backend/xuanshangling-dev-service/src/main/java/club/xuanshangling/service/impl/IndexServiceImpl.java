@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Service
-public class IndexServiceImp implements IndexService {
+public class IndexServiceImpl implements IndexService {
 
     @Autowired
     PddClient pddClient;
@@ -27,7 +27,7 @@ public class IndexServiceImp implements IndexService {
     public Map<String, String> onLoad() {
         HashMap<String, String> map = new HashMap<>();
         String goods_search_response = pddClient.goodsSearch(1, 10, true, GOODS_SEARCH_PID);
-        String theme_list_get_response = pddClient.themeListGet(3, 1);
+        String theme_list_get_response = pddClient.themeListGet(5, 1);
         map.put("goods_search_response", goods_search_response);
         map.put("theme_list_get_response", theme_list_get_response);
         return map;

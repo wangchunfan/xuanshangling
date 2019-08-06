@@ -1,0 +1,28 @@
+<view class="container">
+  <view class="brand-info">
+    <view class="name">
+      <image class="img" src="{{image_url}}" background-size="cover"></image>
+      <view class="info-box">
+        <view class="info">
+          <text class="txt"></text>
+          <text class="line"></text>
+        </view>
+      </view>
+    </view>
+    <view class="desc">
+      {{name}}
+    </view>
+  </view>
+
+  <view class="cate-item">
+    <view class="b">
+      <block wx:for="{{goods_list}}" wx:key="id" wx:for-index="index" wx:for-item="item">
+        <navigator class="item {{index % 2 == 0 ? 'item-b' : ''}}" url="../goods/goods?goods_id={{item.goods_id}}">
+          <image class="img" src="{{item.goods_thumbnail_url}}" background-size="cover"></image>
+          <text class="name">{{item.goods_name}}</text>
+          <text class="price">券后：￥{{(item.min_group_price-item.coupon_discount)/100}}</text>
+        </navigator>
+      </block>
+    </view>
+  </view>
+</view>

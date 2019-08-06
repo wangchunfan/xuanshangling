@@ -23,20 +23,20 @@ Page({
     wx.request({
       url: app.serverUrl + '/index/onLoad',
       success: res => {
+        console.log(res);
         wx.stopPullDownRefresh();
         wx.hideNavigationBarLoading();
         if (res.data.code == 0) {
           var data = res.data.data
           var goods_search_response = JSON.parse(data.goods_search_response).goods_search_response;
           var theme_list_get_response = JSON.parse(data.theme_list_get_response).theme_list_get_response;
-          goods_search_response.goods_list.forEach(function(item) {
-            item.goods_name = item.goods_name.substring(0, 10) + '...';
-          })
+
           that.setData({
             theme_list: theme_list_get_response.theme_list,
             goods_list: goods_search_response.goods_list,
             totalCount: goods_search_response.total_count
           })
+          console.log(this.data.theme_list)
         } else {
           wx.showToast({
             title: res.data.msg,
@@ -50,7 +50,7 @@ Page({
     var that = this;
     wx.showNavigationBarLoading();
     wx.request({
-      url: app.serverUrl + "/home/page",
+      url: app.serverUrl + "/index/page",
       data: {
         page: that.data.currentPage + 1
       },
@@ -58,9 +58,7 @@ Page({
         if (res.data.code == 0) {
           wx.hideNavigationBarLoading();
           var data = JSON.parse(res.data.data).goods_search_response
-          data.goods_list.forEach(function(item){
-            item.goods_name = item.goods_name.substring(0, 10) + '...';
-          })
+
           that.setData({
             currentPage: that.data.currentPage + 1,
             goods_list: that.data.goods_list.concat(data.goods_list),

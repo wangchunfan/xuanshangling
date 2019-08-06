@@ -113,6 +113,24 @@ public class PddClient {
     }
 
     /**
+     * 多多进宝主题商品查询
+     *
+     * @param theme_id 主题ID
+     * @return
+     */
+    public String themeGoodsSearch(Long theme_id) {
+        PddDdkThemeGoodsSearchRequest request = new PddDdkThemeGoodsSearchRequest();
+        request.setThemeId(theme_id);
+        PddDdkThemeGoodsSearchResponse response = null;
+        try {
+            response = client.syncInvoke(request);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return JsonUtil.transferToJson(response);
+    }
+
+    /**
      * 商品详情查询
      *
      * @param goods_id_list
