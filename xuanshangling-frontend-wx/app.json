@@ -2,7 +2,8 @@
   "pages": [
     "pages/index/index",
     "pages/goods/goods",
-    "pages/theme/theme"
+    "pages/theme/theme",
+    "pages/search/search"
   ],
   "window": {
     "navigationBarBackgroundColor": "#FFFFFF",

@@ -17,6 +17,8 @@ public class PddClient {
     private static PopClient client = new PopHttpClient(clientId, clientSecret);
 
     /**
+     * 多多进宝商品查询
+     *
      * @param keyword            商品关键词，与opt_id字段选填一个或全部填写
      * @param opt_id             商品标签类目ID，使用pdd.goods.opt.get获取
      * @param page               默认值1，商品分页数
@@ -63,8 +65,31 @@ public class PddClient {
         return JsonUtil.transferToJson(response);
     }
 
+    /**
+     * 多多进宝商品查询 分页
+     *
+     * @param page
+     * @param page_size
+     * @param with_coupon
+     * @param pid
+     * @return
+     */
     public String goodsSearch(Integer page, Integer page_size, Boolean with_coupon, String pid) {
-        return goodsSearch(null, null, page, page_size, null, with_coupon, null, null, null, null, pid, null, null, null);
+        return goodsSearch(null, null, page, page_size, null,
+                with_coupon, null, null, null, null,
+                pid, null, null, null);
+    }
+
+    /**
+     * 多多进宝商品查询 关键字查询
+     *
+     * @param keyword
+     * @param page
+     * @param page_size
+     * @return
+     */
+    public String goodsSearch(String keyword, Integer page, Integer page_size) {
+        return goodsSearch(keyword, null, page, page_size, null, true, null, null, null, null, null, null, null, null);
     }
 
     /**
@@ -150,6 +175,13 @@ public class PddClient {
         return JsonUtil.transferToJson(response);
     }
 
+    /**
+     * 获取商品推广链接
+     *
+     * @param p_id
+     * @param goods_id_list
+     * @return
+     */
     public String goodsPromotionUrlGenerate(String p_id, Long goods_id_list) {
         PddDdkGoodsPromotionUrlGenerateRequest request = new PddDdkGoodsPromotionUrlGenerateRequest();
         request.setPId(p_id);

@@ -28,4 +28,17 @@ public class GoodsServiceImp implements GoodsService {
         map.put("goods_promotion_url_generate_response", pddClient.goodsPromotionUrlGenerate(p_id, id));
         return map;
     }
+
+    /**
+     * 商品模糊搜索
+     *
+     * @param keyword
+     * @param page
+     * @param page_size
+     * @return
+     */
+    @Override
+    public String goodsSearch(String keyword, Integer page, Integer page_size) {
+        return pddClient.goodsSearch(keyword, page, page_size);
+    }
 }

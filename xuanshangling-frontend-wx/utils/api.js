@@ -1,10 +1,12 @@
 function request(data) {
   return new Promise(function(resolve, reject) {
+    wx.showNavigationBarLoading();
     wx.request({
       url: data.url,
       data: data.data || {},
       method: data.method || "GET",
       success: function(res) {
+        wx.hideNavigationBarLoading();
         if (res.statusCode == 200 && res.data.code == 0) {
           var data = res.data.data;
           data = typeof data == "string" ? JSON.parse(data) : data;

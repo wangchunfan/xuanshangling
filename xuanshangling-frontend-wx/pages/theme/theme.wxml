@@ -18,7 +18,7 @@
     <view class="b">
       <block wx:for="{{goods_list}}" wx:key="id" wx:for-index="index" wx:for-item="item">
         <navigator class="item {{index % 2 == 0 ? 'item-b' : ''}}" url="../goods/goods?goods_id={{item.goods_id}}">
-          <image class="img" src="{{item.goods_thumbnail_url}}" background-size="cover"></image>
+          <image lazy-load="{{true}}" class="img" src="{{item.goods_thumbnail_url}}" background-size="cover"></image>
           <text class="name">{{item.goods_name}}</text>
           <text class="price">券后：￥{{(item.min_group_price-item.coupon_discount)/100}}</text>
         </navigator>

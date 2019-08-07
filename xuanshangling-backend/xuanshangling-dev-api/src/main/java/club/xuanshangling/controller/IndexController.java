@@ -29,7 +29,7 @@ public class IndexController extends BasicController {
     public JsonResult page(@RequestParam(required = false) Integer page,
                            @RequestParam(required = false) Integer page_size) {
         if (page == null) page = 1;
-        if (page_size == null) page_size = 10;
+        if (page_size == null) page_size = DEFAULT_PAGE_SIZE;
         return JsonResult.ok(homeService.page(page, page_size));
     }
 }
