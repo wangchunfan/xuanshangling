@@ -28,7 +28,7 @@
     </view>
   </view>
 
-  <view class="goods-info">
+  <view class="goods-info" wx:if="{{goods_detail.goods_name}}">
     <view class="c">
       <text class="desc">{{goods_detail.goods_name}}</text>
       <view class="price">

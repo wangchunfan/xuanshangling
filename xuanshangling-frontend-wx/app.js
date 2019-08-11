@@ -1,10 +1,13 @@
 //app.js
 App({
   userInfo: null,
-  //serverUrl: "https://xuanshangling.club/dev", 发布
+  //发布
+  //serverUrl: "https://xuanshangling.club/dev",
+  //本地
   //serverUrl: "http://localhost:8001",
+  //局域网
   serverUrl: "http://192.168.0.104:8001",
-  onLaunch: function () {
+  onLaunch: function() {
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())

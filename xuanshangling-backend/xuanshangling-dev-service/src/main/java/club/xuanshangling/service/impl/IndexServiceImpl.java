@@ -9,32 +9,37 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Service
-public class IndexServiceImpl implements IndexService {
+public class IndexServiceImpl extends BasicService implements IndexService {
 
     @Autowired
     PddClient pddClient;
 
-    //带券列表推广位PID
-    private static final String GOODS_SEARCH_PID = "8924949_103152019";
-
     /**
      * 进入首页渲染的内容
-     * s
      *
      * @return
      */
     @Override
     public Map<String, String> onLoad() {
         HashMap<String, String> map = new HashMap<>();
-        String goods_search_response = pddClient.goodsSearch(1, 10, true, GOODS_SEARCH_PID);
+        String goods_search_response = pddClient.goodsSearch(1, 10, true, p_id, 0L);
         String theme_list_get_response = pddClient.themeListGet(5, 1);
+        String goods_opt_get_response = pddClient.goodsOptGet(0);
         map.put("goods_search_response", goods_search_response);
         map.put("theme_list_get_response", theme_list_get_response);
+        map.put("goods_opt_get_response", goods_opt_get_response);
         return map;
     }
 
+    /**
+     * 首页上拉分页内容
+     *
+     * @param page
+     * @param page_size
+     * @return
+     */
     @Override
-    public String page(Integer page, Integer page_size) {
-        return pddClient.goodsSearch(page, page_size, true, GOODS_SEARCH_PID);
+    public String page(Integer page, Integer page_size, Long opt_id) {
+        return pddClient.goodsSearch(page, page_size, true, p_id, opt_id);
     }
 }

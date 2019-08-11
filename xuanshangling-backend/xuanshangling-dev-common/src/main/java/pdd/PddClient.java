@@ -5,6 +5,7 @@ import com.pdd.pop.sdk.http.PopClient;
 import com.pdd.pop.sdk.http.PopHttpClient;
 import com.pdd.pop.sdk.http.api.request.*;
 import com.pdd.pop.sdk.http.api.response.*;
+import lombok.Builder;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -74,8 +75,8 @@ public class PddClient {
      * @param pid
      * @return
      */
-    public String goodsSearch(Integer page, Integer page_size, Boolean with_coupon, String pid) {
-        return goodsSearch(null, null, page, page_size, null,
+    public String goodsSearch(Integer page, Integer page_size, Boolean with_coupon, String pid, Long opt_id) {
+        return goodsSearch(null, opt_id, page, page_size, null,
                 with_coupon, null, null, null, null,
                 pid, null, null, null);
     }
@@ -196,6 +197,23 @@ public class PddClient {
         request.setGenerateWeApp(true);
 //        request.setGenerateWeiboappWebview(false);
         PddDdkGoodsPromotionUrlGenerateResponse response = null;
+        try {
+            response = client.syncInvoke(request);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return JsonUtil.transferToJson(response);
+    }
+
+    /**
+     * 商品标准类目接口
+     *
+     * @return
+     */
+    public String goodsOptGet(Integer opt_id) {
+        PddGoodsOptGetRequest request = new PddGoodsOptGetRequest();
+        request.setParentOptId(opt_id);
+        PddGoodsOptGetResponse response = null;
         try {
             response = client.syncInvoke(request);
         } catch (Exception e) {

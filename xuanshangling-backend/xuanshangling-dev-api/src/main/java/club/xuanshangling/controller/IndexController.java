@@ -15,21 +15,22 @@ import java.util.Map;
 public class IndexController extends BasicController {
 
     @Autowired
-    IndexService homeService;
+    IndexService indexService;
 
     @GetMapping("/onLoad")
     @ApiOperation(value = "首页数据加载", notes = "首页数据加载")
     public JsonResult load() {
-        Map<String, String> map = homeService.onLoad();
+        Map<String, String> map = indexService.onLoad();
         return JsonResult.ok(map);
     }
 
     @GetMapping("/page")
     @ApiOperation(value = "首页上拉分页查询", notes = "首页上拉分页查询")
-    public JsonResult page(@RequestParam(required = false) Integer page,
-                           @RequestParam(required = false) Integer page_size) {
+    public JsonResult page(@RequestParam Integer page,
+                           @RequestParam(required = false) Integer page_size,
+                           @RequestParam(required = false) Long opt_id) {
         if (page == null) page = 1;
         if (page_size == null) page_size = DEFAULT_PAGE_SIZE;
-        return JsonResult.ok(homeService.page(page, page_size));
+        return JsonResult.ok(indexService.page(page, page_size, opt_id));
     }
 }

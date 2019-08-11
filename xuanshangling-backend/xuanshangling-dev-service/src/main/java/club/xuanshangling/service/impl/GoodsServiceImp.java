@@ -9,11 +9,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Service
-public class GoodsServiceImp implements GoodsService {
+public class GoodsServiceImp extends BasicService implements GoodsService {
 
     @Autowired
     PddClient pddClient;
-    private static final String p_id = "8924949_103152019";
 
     /**
      * 获取商品详情
@@ -41,4 +40,17 @@ public class GoodsServiceImp implements GoodsService {
     public String goodsSearch(String keyword, Integer page, Integer page_size) {
         return pddClient.goodsSearch(keyword, page, page_size);
     }
+
+    /**
+     * 获取商品标准类目接口
+     *
+     * @param parent_opt_id
+     * @return
+     */
+    @Override
+    public String goodsOptGet(Integer parent_opt_id) {
+        return pddClient.goodsOptGet(parent_opt_id);
+    }
+
+
 }

@@ -15,5 +15,5 @@ public interface IndexService {
      *
      * @return
      */
-    String page(Integer page, Integer page_size);
+    String page(Integer page, Integer page_size, Long opt_id);
 }

@@ -31,4 +31,10 @@ public class GoodsController extends BasicController {
         String goods = goodsService.goodsSearch(keyword, page, DEFAULT_PAGE_SIZE);
         return JsonResult.ok(goods);
     }
+
+    @GetMapping("/opt/{opt_id}")
+    public JsonResult goodsOptGet(@PathVariable Integer opt_id) {
+        String cats = goodsService.goodsOptGet(opt_id);
+        return JsonResult.ok(cats);
+    }
 }
