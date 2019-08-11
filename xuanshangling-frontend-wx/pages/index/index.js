@@ -15,7 +15,8 @@ Page({
     pageSize: 10,
     totalCount: 0,
     isBottom: false,
-    opt_id_checked: 0
+    opt_id_checked: 0,
+    opt_id: 0
   },
 
   /**
