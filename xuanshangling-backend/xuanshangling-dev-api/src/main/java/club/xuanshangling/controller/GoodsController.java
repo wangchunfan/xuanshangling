@@ -27,8 +27,9 @@ public class GoodsController extends BasicController {
     @GetMapping("search")
     @ApiOperation(value = "商品关键字搜索", notes = "通过关键字搜素")
     public JsonResult goodsSearch(@RequestParam String keyword,
-                                  @RequestParam(defaultValue = "1") Integer page) {
-        String goods = goodsService.goodsSearch(keyword, page, DEFAULT_PAGE_SIZE);
+                                  @RequestParam(defaultValue = "1") Integer page,
+                                  @RequestParam Integer sort_type) {
+        String goods = goodsService.goodsSearch(keyword, page, DEFAULT_PAGE_SIZE, sort_type);
         return JsonResult.ok(goods);
     }
 

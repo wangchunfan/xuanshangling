@@ -89,8 +89,10 @@ public class PddClient {
      * @param page_size
      * @return
      */
-    public String goodsSearch(String keyword, Integer page, Integer page_size) {
-        return goodsSearch(keyword, null, page, page_size, null, true, null, null, null, null, null, null, null, null);
+    public String goodsSearch(String keyword, Integer page, Integer page_size, Integer sort_type) {
+        return goodsSearch(keyword, null, page, page_size, sort_type, true, null,
+                null, null, null, null, null,
+                null, null);
     }
 
     /**

@@ -8,7 +8,7 @@ import java.util.Map;
 public interface GoodsService {
     Map goodsDetail(Long id);
 
-    String goodsSearch(String keyword, Integer page, Integer page_size);
+    String goodsSearch(String keyword, Integer page, Integer page_size,Integer sort_type);
 
     String goodsOptGet(Integer parent_opt_id);
 }

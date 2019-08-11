@@ -1,6 +1,7 @@
 package club.xuanshangling.service.impl;
 
 import club.xuanshangling.service.GoodsService;
+import io.swagger.models.auth.In;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pdd.PddClient;
@@ -37,8 +38,8 @@ public class GoodsServiceImp extends BasicService implements GoodsService {
      * @return
      */
     @Override
-    public String goodsSearch(String keyword, Integer page, Integer page_size) {
-        return pddClient.goodsSearch(keyword, page, page_size);
+    public String goodsSearch(String keyword, Integer page, Integer page_size, Integer sort_type) {
+        return pddClient.goodsSearch(keyword, page, page_size, sort_type);
     }
 
     /**
