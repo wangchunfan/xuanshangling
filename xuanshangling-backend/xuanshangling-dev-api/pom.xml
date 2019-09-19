@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>xunshangling-dev-api</artifactId>
+    <artifactId>xuanshangling-dev-api</artifactId>
     <!-- 打包成war,默认是jar-->
     <packaging>war</packaging>
 
