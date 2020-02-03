@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>xunshangling-dev-common</artifactId>
+    <artifactId>xuanshangling-dev-common</artifactId>
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -67,7 +67,11 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
-        <!-- 拼多多-->
+        <!-- 拼多多
+        将 jar 包安装到本地 maven 仓库
+        mvn install:install-file -Dfile=pop-sdk-0.0.2-all.jar -DgroupId=com.pdd -DartifactId=pop-sdk-all -Dversion=0.0.2 -Dpackaging=jar
+
+        -->
         <dependency>
             <groupId>com.pdd</groupId>
             <artifactId>pop-sdk-all</artifactId>

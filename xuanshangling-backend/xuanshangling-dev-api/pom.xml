@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>xunshangling-dev-api</artifactId>
+    <artifactId>xuanshangling-dev-api</artifactId>
     <!-- 打包成war,默认是jar-->
     <packaging>war</packaging>
 
@@ -38,7 +38,7 @@
         </dependency>
         <dependency>
             <groupId>club.xuanshangling</groupId>
-            <artifactId>xunshangling-dev-common</artifactId>
+            <artifactId>xuanshangling-dev-common</artifactId>
             <version>0.0.1-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
